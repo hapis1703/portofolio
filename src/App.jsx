@@ -1,32 +1,42 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import About from './components/About';
-import Contact from './components/Contact';
 import ParticleBackground from './components/ParticleBackground';
+import HomePage from './pages/HomePage';
+import SkillsPage from './pages/SkillsPage';
+import ProjectsPage from './pages/ProjectsPage';
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
+import DonatePage from './pages/DonatePage';
+import { getThemeColors } from './themes';
 
 export default function App() {
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
+  const [isDark, setIsDark] = useState(localStorage.getItem('isDark') === 'true' || true);
+  const [currentTheme, setCurrentTheme] = useState(localStorage.getItem('currentTheme') || 'modern');
 
   useEffect(() => {
-    const root = window.document.documentElement;
-    root.classList.toggle('dark', theme === 'dark');
-    localStorage.setItem('theme', theme);
-  }, [theme]);
+    localStorage.setItem('isDark', isDark);
+    localStorage.setItem('currentTheme', currentTheme);
+  }, [isDark, currentTheme]);
+
+  const colors = getThemeColors(currentTheme, isDark);
 
   return (
-    <div className={`min-h-screen font-sans selection:bg-cyan-400 selection:text-white ${theme === 'dark' ? 'bg-slate-950 text-slate-100' : 'bg-slate-50 text-slate-900'}`}>
-      <ParticleBackground theme={theme} />
-      <Navbar theme={theme} setTheme={setTheme} />
-      <main>
-        <Hero theme={theme} />
-        <Skills theme={theme} />
-        <Projects theme={theme} />
-        <About theme={theme} />
-        <Contact theme={theme} />
-      </main>
-    </div>
+    <Router>
+      <div className={`min-h-screen font-sans selection:bg-${colors.primary} selection:text-white ${colors.bg} ${colors.text}`}>
+        <ParticleBackground colors={colors} isDark={isDark} />
+        <Navbar isDark={isDark} setIsDark={setIsDark} currentTheme={currentTheme} setCurrentTheme={setCurrentTheme} colors={colors} />
+        <main className="pt-16">
+          <Routes>
+            <Route path="/" element={<HomePage colors={colors} />} />
+            <Route path="/skills" element={<SkillsPage colors={colors} />} />
+            <Route path="/projects" element={<ProjectsPage colors={colors} />} />
+            <Route path="/about" element={<AboutPage colors={colors} />} />
+            <Route path="/contact" element={<ContactPage colors={colors} />} />
+            <Route path="/donate" element={<DonatePage colors={colors} />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }

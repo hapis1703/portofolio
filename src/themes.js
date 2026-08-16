@@ -1,0 +1,185 @@
+export const themes = {
+  modern: {
+    name: 'Modern',
+    dark: {
+      bg: 'bg-slate-950',
+      bgAlt: 'bg-slate-900',
+      text: 'text-slate-100',
+      textMuted: 'text-slate-400',
+      primary: 'cyan-400',
+      secondary: 'purple-400',
+      card: 'bg-slate-800/30 border-slate-700',
+      cardHover: 'hover:border-cyan-500',
+      gradient: 'from-cyan-300 to-purple-300',
+      button: 'bg-cyan-500 hover:bg-cyan-600',
+      border: 'border-slate-800',
+    },
+    light: {
+      bg: 'bg-slate-50',
+      bgAlt: 'bg-slate-50',
+      text: 'text-slate-900',
+      textMuted: 'text-slate-600',
+      primary: 'cyan-600',
+      secondary: 'purple-600',
+      card: 'bg-white/60 border-slate-200',
+      cardHover: 'hover:border-cyan-400',
+      gradient: 'from-cyan-600 to-purple-600',
+      button: 'bg-cyan-600 hover:bg-cyan-700',
+      border: 'border-slate-200',
+    }
+  },
+  
+  vintage: {
+    name: 'Vintage',
+    dark: {
+      bg: 'bg-amber-950',
+      bgAlt: 'bg-amber-900',
+      text: 'text-amber-50',
+      textMuted: 'text-amber-300',
+      primary: 'amber-400',
+      secondary: 'orange-400',
+      card: 'bg-amber-900/40 border-amber-700',
+      cardHover: 'hover:border-amber-500',
+      gradient: 'from-amber-300 to-orange-300',
+      button: 'bg-amber-600 hover:bg-amber-700',
+      border: 'border-amber-800',
+    },
+    light: {
+      bg: 'bg-amber-50',
+      bgAlt: 'bg-amber-100',
+      text: 'text-amber-900',
+      textMuted: 'text-amber-700',
+      primary: 'amber-700',
+      secondary: 'orange-700',
+      card: 'bg-amber-100/70 border-amber-300',
+      cardHover: 'hover:border-amber-600',
+      gradient: 'from-amber-700 to-orange-700',
+      button: 'bg-amber-700 hover:bg-amber-800',
+      border: 'border-amber-300',
+    }
+  },
+
+  neon: {
+    name: 'Neon',
+    dark: {
+      bg: 'bg-black',
+      bgAlt: 'bg-zinc-950',
+      text: 'text-white',
+      textMuted: 'text-zinc-400',
+      primary: 'fuchsia-500',
+      secondary: 'lime-400',
+      card: 'bg-zinc-900/50 border-fuchsia-500/30',
+      cardHover: 'hover:border-fuchsia-500',
+      gradient: 'from-fuchsia-400 to-lime-400',
+      button: 'bg-fuchsia-600 hover:bg-fuchsia-700',
+      border: 'border-zinc-800',
+    },
+    light: {
+      bg: 'bg-white',
+      bgAlt: 'bg-zinc-50',
+      text: 'text-black',
+      textMuted: 'text-zinc-600',
+      primary: 'fuchsia-600',
+      secondary: 'lime-600',
+      card: 'bg-white border-fuchsia-300',
+      cardHover: 'hover:border-fuchsia-500',
+      gradient: 'from-fuchsia-600 to-lime-600',
+      button: 'bg-fuchsia-600 hover:bg-fuchsia-700',
+      border: 'border-zinc-200',
+    }
+  },
+
+  ocean: {
+    name: 'Ocean',
+    dark: {
+      bg: 'bg-blue-950',
+      bgAlt: 'bg-blue-900',
+      text: 'text-blue-50',
+      textMuted: 'text-blue-300',
+      primary: 'blue-400',
+      secondary: 'teal-400',
+      card: 'bg-blue-900/40 border-blue-700',
+      cardHover: 'hover:border-blue-500',
+      gradient: 'from-blue-400 to-teal-400',
+      button: 'bg-blue-600 hover:bg-blue-700',
+      border: 'border-blue-800',
+    },
+    light: {
+      bg: 'bg-blue-50',
+      bgAlt: 'bg-blue-100',
+      text: 'text-blue-900',
+      textMuted: 'text-blue-700',
+      primary: 'blue-600',
+      secondary: 'teal-600',
+      card: 'bg-blue-100/70 border-blue-300',
+      cardHover: 'hover:border-blue-500',
+      gradient: 'from-blue-600 to-teal-600',
+      button: 'bg-blue-600 hover:bg-blue-700',
+      border: 'border-blue-300',
+    }
+  },
+
+  forest: {
+    name: 'Forest',
+    dark: {
+      bg: 'bg-emerald-950',
+      bgAlt: 'bg-emerald-900',
+      text: 'text-emerald-50',
+      textMuted: 'text-emerald-300',
+      primary: 'emerald-400',
+      secondary: 'green-400',
+      card: 'bg-emerald-900/40 border-emerald-700',
+      cardHover: 'hover:border-emerald-500',
+      gradient: 'from-emerald-400 to-green-400',
+      button: 'bg-emerald-600 hover:bg-emerald-700',
+      border: 'border-emerald-800',
+    },
+    light: {
+      bg: 'bg-emerald-50',
+      bgAlt: 'bg-emerald-100',
+      text: 'text-emerald-900',
+      textMuted: 'text-emerald-700',
+      primary: 'emerald-600',
+      secondary: 'green-600',
+      card: 'bg-emerald-100/70 border-emerald-300',
+      cardHover: 'hover:border-emerald-500',
+      gradient: 'from-emerald-600 to-green-600',
+      button: 'bg-emerald-600 hover:bg-emerald-700',
+      border: 'border-emerald-300',
+    }
+  },
+
+  sunset: {
+    name: 'Sunset',
+    dark: {
+      bg: 'bg-rose-950',
+      bgAlt: 'bg-rose-900',
+      text: 'text-rose-50',
+      textMuted: 'text-rose-300',
+      primary: 'rose-400',
+      secondary: 'pink-400',
+      card: 'bg-rose-900/40 border-rose-700',
+      cardHover: 'hover:border-rose-500',
+      gradient: 'from-rose-400 to-pink-400',
+      button: 'bg-rose-600 hover:bg-rose-700',
+      border: 'border-rose-800',
+    },
+    light: {
+      bg: 'bg-rose-50',
+      bgAlt: 'bg-rose-100',
+      text: 'text-rose-900',
+      textMuted: 'text-rose-700',
+      primary: 'rose-600',
+      secondary: 'pink-600',
+      card: 'bg-rose-100/70 border-rose-300',
+      cardHover: 'hover:border-rose-500',
+      gradient: 'from-rose-600 to-pink-600',
+      button: 'bg-rose-600 hover:bg-rose-700',
+      border: 'border-rose-300',
+    }
+  }
+};
+
+export function getThemeColors(themeName, isDark) {
+  return themes[themeName]?.[isDark ? 'dark' : 'light'] || themes.modern[isDark ? 'dark' : 'light'];
+}
