@@ -1,10 +1,10 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { DollarSign, X, Loader2, Check } from 'lucide-react';
-import { useState } from 'react';
-import { createQRIS, checkQRISStatus } from '../utils/api';
+import { motion, AnimatePresence } from "framer-motion";
+import { DollarSign, X, Loader2, Check } from "lucide-react";
+import { useState } from "react";
+import { createQRIS, checkQRISStatus } from "../utils/api";
 
 export default function DonatePage({ colors }) {
-  const [amount, setAmount] = useState('');
+  const [amount, setAmount] = useState("");
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [qrData, setQrData] = useState(null);
@@ -15,16 +15,16 @@ export default function DonatePage({ colors }) {
     if (!amount || amount <= 0) return;
 
     setLoading(true);
-    
+
     const result = await createQRIS(amount);
-    
+
     if (result.success) {
       setQrData(result.data);
       setShowModal(true);
     } else {
-      alert('Failed to generate QRIS. Please try again.');
+      alert("Failed to generate QRIS. Please try again.");
     }
-    
+
     setLoading(false);
   };
 
@@ -34,11 +34,11 @@ export default function DonatePage({ colors }) {
     setCheckingStatus(true);
 
     const result = await checkQRISStatus(qrData.transaction_id);
-    
-    if (result.success && result.status === 'success') {
+
+    if (result.success && result.status === "success") {
       setPaymentSuccess(true);
     }
-    
+
     setCheckingStatus(false);
   };
 
@@ -51,7 +51,9 @@ export default function DonatePage({ colors }) {
           transition={{ duration: 0.2 }}
           className="text-center mb-12"
         >
-          <h2 className={`text-4xl font-black mb-4 ${colors.text}`}>Support Me</h2>
+          <h2 className={`text-4xl font-black mb-4 ${colors.text}`}>
+            Support Me
+          </h2>
           <p className={colors.textMuted}>Buy me a coffee via QRIS</p>
         </motion.div>
 
@@ -63,17 +65,23 @@ export default function DonatePage({ colors }) {
         >
           <div className="space-y-6">
             <div>
-              <label className={`block text-sm font-medium mb-2 ${colors.textMuted}`}>
+              <label
+                className={`block text-sm font-medium mb-2 ${colors.textMuted}`}
+              >
                 Payment Method
               </label>
-              <div className={`px-4 py-3 rounded-xl border ${colors.card} ${colors.text} flex items-center gap-2`}>
+              <div
+                className={`px-4 py-3 rounded-xl border ${colors.card} ${colors.text} flex items-center gap-2`}
+              >
                 <DollarSign size={20} className={`text-${colors.primary}`} />
                 <span className="font-semibold">QRIS</span>
               </div>
             </div>
 
             <div>
-              <label className={`block text-sm font-medium mb-2 ${colors.textMuted}`}>
+              <label
+                className={`block text-sm font-medium mb-2 ${colors.textMuted}`}
+              >
                 Nominal (IDR)
               </label>
               <input
@@ -136,10 +144,12 @@ export default function DonatePage({ colors }) {
 
               <div className="text-center">
                 <h3 className={`text-2xl font-black mb-2 ${colors.text}`}>
-                  {paymentSuccess ? 'Pembayaran Berhasil!' : 'Scan QR Code'}
+                  {paymentSuccess ? "Pembayaran Berhasil!" : "Scan QR Code"}
                 </h3>
                 {!paymentSuccess && (
-                  <p className={`mb-6 ${colors.textMuted}`}>Amount: IDR {parseInt(amount).toLocaleString('id-ID')}</p>
+                  <p className={`mb-6 ${colors.textMuted}`}>
+                    Amount: IDR {parseInt(amount).toLocaleString("id-ID")}
+                  </p>
                 )}
 
                 {paymentSuccess ? (
@@ -149,8 +159,14 @@ export default function DonatePage({ colors }) {
                     transition={{ duration: 0.3 }}
                     className="bg-green-500 rounded-2xl p-12 mb-6 inline-flex flex-col items-center justify-center"
                   >
-                    <Check size={80} className="text-white mb-4" strokeWidth={3} />
-                    <p className="text-white text-xl font-bold">Pembayaran Berhasil!</p>
+                    <Check
+                      size={80}
+                      className="text-white mb-4"
+                      strokeWidth={3}
+                    />
+                    <p className="text-white text-xl font-bold">
+                      Pembayaran Berhasil!
+                    </p>
                   </motion.div>
                 ) : (
                   <div className="bg-white p-4 rounded-xl mb-6 inline-block">
@@ -165,15 +181,18 @@ export default function DonatePage({ colors }) {
                 <motion.button
                   onClick={checkPaymentStatus}
                   disabled={checkingStatus || paymentSuccess}
-                  whileHover={{ scale: (checkingStatus || paymentSuccess) ? 1 : 1.02 }}
-                  whileTap={{ scale: (checkingStatus || paymentSuccess) ? 1 : 0.98 }}
+                  whileHover={{
+                    scale: checkingStatus || paymentSuccess ? 1 : 1.02,
+                  }}
+                  whileTap={{
+                    scale: checkingStatus || paymentSuccess ? 1 : 0.98,
+                  }}
                   transition={{ duration: 0.1 }}
-                  className={`w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition duration-100 ${paymentSuccess ? 'bg-blue-400 text-white' : `${colors.button} text-white`} disabled:opacity-50 disabled:cursor-not-allowed`}
+                  className={`w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition duration-100 ${paymentSuccess ? "bg-blue-400 text-white" : `${colors.button} text-white`} disabled:opacity-50 disabled:cursor-not-allowed`}
                 >
                   {paymentSuccess ? (
                     <>
-                      <Check size={18} />
-                      ✓ Pembayaran Berhasil
+                      <Check size={18} />✓ Pembayaran Berhasil
                     </>
                   ) : checkingStatus ? (
                     <>
@@ -181,7 +200,7 @@ export default function DonatePage({ colors }) {
                       Checking...
                     </>
                   ) : (
-                    'Cek Status Pembayaran'
+                    "Cek Status Pembayaran"
                   )}
                 </motion.button>
               </div>

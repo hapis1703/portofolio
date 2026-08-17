@@ -1,11 +1,13 @@
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 export default function AnimatedBackground({ theme }) {
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden">
       {/* Base gradient */}
-      <div className={`absolute inset-0 ${theme === 'dark' ? 'bg-slate-950' : 'bg-slate-50'}`} />
-      
+      <div
+        className={`absolute inset-0 ${theme === "dark" ? "bg-slate-950" : "bg-slate-50"}`}
+      />
+
       {/* Moving orbs */}
       <div className="absolute inset-0">
         {[1, 2, 3, 4].map((i) => (
@@ -21,9 +23,13 @@ export default function AnimatedBackground({ theme }) {
               ease: "linear",
             }}
             className={`absolute w-[300px] h-[300px] rounded-full blur-[100px] opacity-30 ${
-              theme === 'dark' 
-                ? i % 2 === 0 ? 'bg-cyan-500/30' : 'bg-purple-500/30'
-                : i % 2 === 0 ? 'bg-cyan-300/30' : 'bg-purple-300/30'
+              theme === "dark"
+                ? i % 2 === 0
+                  ? "bg-cyan-500/30"
+                  : "bg-purple-500/30"
+                : i % 2 === 0
+                  ? "bg-cyan-300/30"
+                  : "bg-purple-300/30"
             }`}
             style={{
               left: `${20 + i * 20}%`,
@@ -34,7 +40,9 @@ export default function AnimatedBackground({ theme }) {
       </div>
 
       {/* Animated grid */}
-      <div className={`absolute inset-0 opacity-[0.03] [background-image:linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] [background-size:40px_40px]`}>
+      <div
+        className={`absolute inset-0 opacity-[0.03] [background-image:linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] [background-size:40px_40px]`}
+      >
         <motion.div
           animate={{
             backgroundPosition: ["0px 0px", "40px 40px"],
@@ -64,7 +72,7 @@ export default function AnimatedBackground({ theme }) {
               ease: "easeInOut",
             }}
             className={`absolute w-[2px] h-[2px] rounded-full ${
-              theme === 'dark' ? 'bg-cyan-400/50' : 'bg-cyan-500/50'
+              theme === "dark" ? "bg-cyan-400/50" : "bg-cyan-500/50"
             }`}
             style={{
               left: `${Math.random() * 100}%`,
@@ -75,7 +83,7 @@ export default function AnimatedBackground({ theme }) {
       </div>
 
       {/* Light mode gradient overlay */}
-      {theme === 'light' && (
+      {theme === "light" && (
         <div className="absolute inset-0 bg-gradient-to-br from-slate-100/20 via-transparent to-slate-50/10" />
       )}
     </div>

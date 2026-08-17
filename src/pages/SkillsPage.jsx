@@ -1,19 +1,25 @@
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 export default function SkillsPage({ colors }) {
   const skillCategories = [
     {
-      title: 'Frameworks & Tech',
-      skills: ['React', 'Next.js', 'Node.js', 'JavaScript', 'Google Apps Script']
+      title: "Frameworks & Tech",
+      skills: [
+        "React",
+        "Next.js",
+        "Node.js",
+        "JavaScript",
+        "Google Apps Script",
+      ],
     },
     {
-      title: 'Infrastructure',
-      skills: ['Vercel', 'Railway', 'Cloudflare', 'Firebase']
+      title: "Infrastructure",
+      skills: ["Vercel", "Railway", "Cloudflare", "Firebase"],
     },
     {
-      title: 'Tools',
-      skills: ['Git', 'GitHub', 'Tailwind CSS', 'VS Code', 'Canva', 'CapCut']
-    }
+      title: "Tools",
+      skills: ["Git", "GitHub", "Tailwind CSS", "VS Code", "Canva", "CapCut"],
+    },
   ];
 
   return (
@@ -25,7 +31,9 @@ export default function SkillsPage({ colors }) {
           transition={{ duration: 0.2 }}
           className="text-center mb-12"
         >
-          <h2 className={`text-4xl font-black mb-4 ${colors.text}`}>Tech Stack</h2>
+          <h2 className={`text-4xl font-black mb-4 ${colors.text}`}>
+            Tech Stack
+          </h2>
           <p className={colors.textMuted}>Tools I use to build</p>
         </motion.div>
 
@@ -47,7 +55,10 @@ export default function SkillsPage({ colors }) {
                     key={skill}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.1, delay: (index * 0.1) + (skillIndex * 0.05) }}
+                    transition={{
+                      duration: 0.1,
+                      delay: index * 0.1 + skillIndex * 0.05,
+                    }}
                     whileHover={{ scale: 1.05, y: -1 }}
                     className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition duration-100 ${colors.card}`}
                   >

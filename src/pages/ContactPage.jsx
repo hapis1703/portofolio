@@ -1,25 +1,33 @@
-import { motion } from 'framer-motion';
-import { Mail, Code2, Camera, Send } from 'lucide-react';
-import { useState } from 'react';
-import { sendDiscordMessage } from '../utils/api';
+import { motion } from "framer-motion";
+import { Mail, Code2, Camera, Send } from "lucide-react";
+import { useState } from "react";
+import { sendDiscordMessage } from "../utils/api";
 
 export default function ContactPage({ colors }) {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [status, setStatus] = useState('');
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [status, setStatus] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus('sending');
-    
-    const success = await sendDiscordMessage(formData.name, formData.email, formData.message);
-    
+    setStatus("sending");
+
+    const success = await sendDiscordMessage(
+      formData.name,
+      formData.email,
+      formData.message,
+    );
+
     if (success) {
-      setStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-      setTimeout(() => setStatus(''), 3000);
+      setStatus("success");
+      setFormData({ name: "", email: "", message: "" });
+      setTimeout(() => setStatus(""), 3000);
     } else {
-      setStatus('error');
-      setTimeout(() => setStatus(''), 3000);
+      setStatus("error");
+      setTimeout(() => setStatus(""), 3000);
     }
   };
 
@@ -36,7 +44,9 @@ export default function ContactPage({ colors }) {
           transition={{ duration: 0.2 }}
           className="text-center mb-12"
         >
-          <h2 className={`text-4xl font-black mb-4 ${colors.text}`}>Get In Touch</h2>
+          <h2 className={`text-4xl font-black mb-4 ${colors.text}`}>
+            Get In Touch
+          </h2>
           <p className={colors.textMuted}>Let's work together</p>
         </motion.div>
 
@@ -46,11 +56,18 @@ export default function ContactPage({ colors }) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <h3 className={`text-xl font-bold mb-6 ${colors.text}`}>Send a Message</h3>
-            <form onSubmit={handleSubmit} className={`rounded-2xl p-6 border backdrop-blur-md ${colors.card}`}>
+            <h3 className={`text-xl font-bold mb-6 ${colors.text}`}>
+              Send a Message
+            </h3>
+            <form
+              onSubmit={handleSubmit}
+              className={`rounded-2xl p-6 border backdrop-blur-md ${colors.card}`}
+            >
               <div className="space-y-4">
                 <div>
-                  <label className={`block text-sm font-medium mb-2 ${colors.textMuted}`}>
+                  <label
+                    className={`block text-sm font-medium mb-2 ${colors.textMuted}`}
+                  >
                     Name
                   </label>
                   <input
@@ -65,7 +82,9 @@ export default function ContactPage({ colors }) {
                 </div>
 
                 <div>
-                  <label className={`block text-sm font-medium mb-2 ${colors.textMuted}`}>
+                  <label
+                    className={`block text-sm font-medium mb-2 ${colors.textMuted}`}
+                  >
                     Email
                   </label>
                   <input
@@ -80,7 +99,9 @@ export default function ContactPage({ colors }) {
                 </div>
 
                 <div>
-                  <label className={`block text-sm font-medium mb-2 ${colors.textMuted}`}>
+                  <label
+                    className={`block text-sm font-medium mb-2 ${colors.textMuted}`}
+                  >
                     Message
                   </label>
                   <textarea
@@ -96,13 +117,23 @@ export default function ContactPage({ colors }) {
 
                 <motion.button
                   type="submit"
-                  disabled={status === 'sending'}
-                  whileHover={{ scale: status === 'sending' ? 1 : 1.02 }}
-                  whileTap={{ scale: status === 'sending' ? 1 : 0.98 }}
+                  disabled={status === "sending"}
+                  whileHover={{ scale: status === "sending" ? 1 : 1.02 }}
+                  whileTap={{ scale: status === "sending" ? 1 : 0.98 }}
                   transition={{ duration: 0.1 }}
-                  className={`w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-semibold transition duration-100 ${status === 'success' ? 'bg-green-500 text-white' : status === 'error' ? 'bg-red-500 text-white' : `${colors.button} text-white`} disabled:opacity-50 disabled:cursor-not-allowed`}
+                  className={`w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-semibold transition duration-100 ${status === "success" ? "bg-green-500 text-white" : status === "error" ? "bg-red-500 text-white" : `${colors.button} text-white`} disabled:opacity-50 disabled:cursor-not-allowed`}
                 >
-                  {status === 'sending' ? 'Sending...' : status === 'success' ? '✓ Sent!' : status === 'error' ? '✗ Failed' : <>Send Message <Send size={18} /></>}
+                  {status === "sending" ? (
+                    "Sending..."
+                  ) : status === "success" ? (
+                    "✓ Sent!"
+                  ) : status === "error" ? (
+                    "✗ Failed"
+                  ) : (
+                    <>
+                      Send Message <Send size={18} />
+                    </>
+                  )}
                 </motion.button>
               </div>
             </form>
@@ -113,8 +144,10 @@ export default function ContactPage({ colors }) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <h3 className={`text-xl font-bold mb-6 ${colors.text}`}>Contact Info</h3>
-            
+            <h3 className={`text-xl font-bold mb-6 ${colors.text}`}>
+              Contact Info
+            </h3>
+
             <div className="space-y-4 mb-8">
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
@@ -126,8 +159,15 @@ export default function ContactPage({ colors }) {
                 <div className="flex items-center gap-3">
                   <Mail className={`text-${colors.primary}`} size={20} />
                   <div>
-                    <p className={`text-xs font-medium uppercase tracking-wide mb-1 ${colors.textMuted}`}>Email</p>
-                    <a href="mailto:hepiss1703@gmail.com" className={`font-medium ${colors.text} hover:text-${colors.primary} transition`}>
+                    <p
+                      className={`text-xs font-medium uppercase tracking-wide mb-1 ${colors.textMuted}`}
+                    >
+                      Email
+                    </p>
+                    <a
+                      href="mailto:hepiss1703@gmail.com"
+                      className={`font-medium ${colors.text} hover:text-${colors.primary} transition`}
+                    >
                       hepiss1703@gmail.com
                     </a>
                   </div>
@@ -144,8 +184,17 @@ export default function ContactPage({ colors }) {
                 <div className="flex items-center gap-3">
                   <Camera className={`text-${colors.primary}`} size={20} />
                   <div>
-                    <p className={`text-xs font-medium uppercase tracking-wide mb-1 ${colors.textMuted}`}>Instagram</p>
-                    <a href="https://instagram.com/hapisges" target="_blank" rel="noreferrer" className={`font-medium ${colors.text} hover:text-${colors.primary} transition`}>
+                    <p
+                      className={`text-xs font-medium uppercase tracking-wide mb-1 ${colors.textMuted}`}
+                    >
+                      Instagram
+                    </p>
+                    <a
+                      href="https://instagram.com/hapisges"
+                      target="_blank"
+                      rel="noreferrer"
+                      className={`font-medium ${colors.text} hover:text-${colors.primary} transition`}
+                    >
                       @hapisges
                     </a>
                   </div>
@@ -156,8 +205,16 @@ export default function ContactPage({ colors }) {
             <h3 className={`text-xl font-bold mb-4 ${colors.text}`}>Connect</h3>
             <div className="space-y-3">
               {[
-                { icon: <Code2 size={20} />, label: 'GitHub', link: 'https://github.com/hapis1703' },
-                { icon: <Camera size={20} />, label: 'Instagram', link: 'https://instagram.com/hapisges' },
+                {
+                  icon: <Code2 size={20} />,
+                  label: "GitHub",
+                  link: "https://github.com/hapis1703",
+                },
+                {
+                  icon: <Camera size={20} />,
+                  label: "Instagram",
+                  link: "https://instagram.com/hapisges",
+                },
               ].map((social, index) => (
                 <motion.a
                   key={social.label}
@@ -170,9 +227,7 @@ export default function ContactPage({ colors }) {
                   whileHover={{ x: 5 }}
                   className={`flex items-center gap-4 p-4 rounded-xl border backdrop-blur-sm transition duration-100 ${colors.card} ${colors.cardHover}`}
                 >
-                  <div className={`text-${colors.primary}`}>
-                    {social.icon}
-                  </div>
+                  <div className={`text-${colors.primary}`}>{social.icon}</div>
                   <span className={`font-medium ${colors.text}`}>
                     {social.label}
                   </span>

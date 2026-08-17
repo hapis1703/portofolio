@@ -1,7 +1,7 @@
-import { motion } from 'framer-motion';
-import { Code2, ExternalLink } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import { fetchPinnedRepos, fetchRecentRepos } from '../utils/api';
+import { motion } from "framer-motion";
+import { Code2, ExternalLink } from "lucide-react";
+import { useEffect, useState } from "react";
+import { fetchPinnedRepos, fetchRecentRepos } from "../utils/api";
 
 export default function ProjectsPage({ colors }) {
   const [pinnedRepos, setPinnedRepos] = useState([]);
@@ -21,8 +21,12 @@ export default function ProjectsPage({ colors }) {
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
       {[...Array(count)].map((_, i) => (
         <div key={i} className={`rounded-lg p-4 border ${colors.card}`}>
-          <div className={`h-6 w-3/4 mb-2 rounded animate-pulse ${colors.card}`} />
-          <div className={`h-4 w-full mb-3 rounded animate-pulse ${colors.card}`} />
+          <div
+            className={`h-6 w-3/4 mb-2 rounded animate-pulse ${colors.card}`}
+          />
+          <div
+            className={`h-4 w-full mb-3 rounded animate-pulse ${colors.card}`}
+          />
           <div className="flex justify-between">
             <div className={`h-6 w-16 rounded animate-pulse ${colors.card}`} />
             <div className={`h-6 w-6 rounded animate-pulse ${colors.card}`} />
@@ -41,12 +45,16 @@ export default function ProjectsPage({ colors }) {
           transition={{ duration: 0.2 }}
           className="text-center mb-12"
         >
-          <h2 className={`text-4xl font-black mb-4 ${colors.text}`}>Featured Projects</h2>
+          <h2 className={`text-4xl font-black mb-4 ${colors.text}`}>
+            Featured Projects
+          </h2>
           <p className={colors.textMuted}>My work from GitHub</p>
         </motion.div>
 
         <div className="mb-12">
-          <h3 className={`text-xl font-bold mb-6 text-${colors.primary}`}>Pinned Repositories</h3>
+          <h3 className={`text-xl font-bold mb-6 text-${colors.primary}`}>
+            Pinned Repositories
+          </h3>
           {loading ? (
             <RepoSkeleton count={2} />
           ) : pinnedRepos.length > 0 ? (
@@ -64,17 +72,27 @@ export default function ProjectsPage({ colors }) {
                   className={`block rounded-lg p-6 border transition duration-100 ${colors.card} ${colors.cardHover}`}
                 >
                   <div className="flex items-start justify-between mb-3">
-                    <h4 className={`font-bold text-lg truncate ${colors.text}`}>{repo.repo}</h4>
+                    <h4 className={`font-bold text-lg truncate ${colors.text}`}>
+                      {repo.repo}
+                    </h4>
                     <Code2 size={20} className={`text-${colors.primary}`} />
                   </div>
-                  <p className={`text-sm mb-4 line-clamp-2 ${colors.textMuted}`}>{repo.description}</p>
+                  <p
+                    className={`text-sm mb-4 line-clamp-2 ${colors.textMuted}`}
+                  >
+                    {repo.description}
+                  </p>
                   <div className="flex items-center gap-3">
                     {repo.language && (
-                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${colors.card}`}>
+                      <span
+                        className={`px-3 py-1 rounded-full text-xs font-medium ${colors.card}`}
+                      >
                         {repo.language}
                       </span>
                     )}
-                    <span className={`text-xs ${colors.textMuted}`}>{repo.stars} ★</span>
+                    <span className={`text-xs ${colors.textMuted}`}>
+                      {repo.stars} ★
+                    </span>
                   </div>
                 </motion.a>
               ))}
@@ -85,7 +103,9 @@ export default function ProjectsPage({ colors }) {
         </div>
 
         <div>
-          <h3 className={`text-xl font-bold mb-6 text-${colors.primary}`}>Recent Repositories</h3>
+          <h3 className={`text-xl font-bold mb-6 text-${colors.primary}`}>
+            Recent Repositories
+          </h3>
           {loading ? (
             <RepoSkeleton count={6} />
           ) : recentRepos.length > 0 ? (
@@ -103,19 +123,27 @@ export default function ProjectsPage({ colors }) {
                   className={`block rounded-lg p-6 border transition duration-100 ${colors.card} ${colors.cardHover}`}
                 >
                   <div className="flex items-start justify-between mb-3">
-                    <h4 className={`font-bold text-lg truncate ${colors.text}`}>{repo.name}</h4>
+                    <h4 className={`font-bold text-lg truncate ${colors.text}`}>
+                      {repo.name}
+                    </h4>
                     <ExternalLink size={18} className={colors.textMuted} />
                   </div>
-                  <p className={`text-sm mb-4 line-clamp-2 ${colors.textMuted}`}>
-                    {repo.description || 'No description provided.'}
+                  <p
+                    className={`text-sm mb-4 line-clamp-2 ${colors.textMuted}`}
+                  >
+                    {repo.description || "No description provided."}
                   </p>
                   <div className="flex items-center gap-3">
                     {repo.language && (
-                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${colors.card}`}>
+                      <span
+                        className={`px-3 py-1 rounded-full text-xs font-medium ${colors.card}`}
+                      >
                         {repo.language}
                       </span>
                     )}
-                    <span className={`text-xs ${colors.textMuted}`}>{repo.stargazers_count} ★</span>
+                    <span className={`text-xs ${colors.textMuted}`}>
+                      {repo.stargazers_count} ★
+                    </span>
                   </div>
                 </motion.a>
               ))}
